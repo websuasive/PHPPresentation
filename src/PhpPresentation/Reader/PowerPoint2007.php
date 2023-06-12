@@ -557,7 +557,7 @@ class PowerPoint2007 implements ReaderInterface
                     $oElementLvlDefRPR = $xmlReader->getElement('a:defRPr', $oElementLvl);
                     if ($oElementLvlDefRPR instanceof DOMElement) {
                         if ($oElementLvlDefRPR->hasAttribute('sz')) {
-                            $oRTParagraph->getFont()->setSize($oElementLvlDefRPR->getAttribute('sz') / 100);
+                            $oRTParagraph->getFont()->setSize((int) round($oElementLvlDefRPR->getAttribute('sz') / 100, 0));
                         }
                         if ($oElementLvlDefRPR->hasAttribute('b') && 1 == $oElementLvlDefRPR->getAttribute('b')) {
                             $oRTParagraph->getFont()->setBold(true);
@@ -1266,7 +1266,7 @@ class PowerPoint2007 implements ReaderInterface
     protected function loadStyleBorder(XMLReader $xmlReader, DOMElement $oElement, Border $oBorder): void
     {
         if ($oElement->hasAttribute('w')) {
-            $oBorder->setLineWidth($oElement->getAttribute('w') / 12700);
+            $oBorder->setLineWidth((int) round($oElement->getAttribute('w') / 12700, 0));
         }
         if ($oElement->hasAttribute('cmpd')) {
             $oBorder->setLineStyle($oElement->getAttribute('cmpd'));
