@@ -59,7 +59,7 @@ class File extends AbstractDrawingAdapter
 
         if ($pVerifyFile) {
             if (0 == $this->width && 0 == $this->height) {
-                // getimagesize() returns false for formats it can't read (e.g. SVG); PHP 8.5 warns when destructuring false
+                // getimagesize() returns false for images it can't measure (e.g. SVG without width/height); PHP 8.5 warns when destructuring false
                 $size = getimagesize($this->getPath());
                 if (is_array($size)) {
                     list($this->width, $this->height) = $size;

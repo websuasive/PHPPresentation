@@ -76,7 +76,7 @@ class Image extends AbstractBackground
 
             if (0 == $this->width && 0 == $this->height) {
                 // Get width/height
-                // getimagesize() returns false for formats it can't read; PHP 8.5 warns when destructuring false
+                // getimagesize() returns false for images it can't measure; PHP 8.5 warns when destructuring false
                 $size = getimagesize($pValue);
                 if (is_array($size)) {
                     list($this->width, $this->height) = $size;
